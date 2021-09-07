@@ -2,7 +2,15 @@
 
 <!-- Form - Create a email and password input -->
 <!-- <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)"> -->
-<form>
+
+    Username by email: <br>
+    <input type="email" [(ngModel)] = "userpass.username"> <br>
+    User Password: <br>
+    <input type="password" [(ngModel)]="userpass.pass"> <br>
+    
+<button class="log_but" value="Login" id="login"(click)="loginfunc()">Login</button>
+
+<!-- <form>
     <label for="email">Email:</label><br>
     <input type="email" id="email" name="email" [(ngModel)]="email"><br>
 
@@ -10,5 +18,5 @@
     <input type="password" id="password" name="password" [(ngModel)]="password">
 
     <button (click)="itemClicked()">Submit</button>
-</form>
+</form> -->
 
