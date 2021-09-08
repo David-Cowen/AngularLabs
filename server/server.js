@@ -24,7 +24,7 @@ var server = http.listen(3000, function() {
 // });
 
 app.post('login', require('./www/api/login'));
-app.post('./loginafter', require('./www/api/loginAfter'));
+app.post('/loginafter', require('./www/api/loginAfter'));
 
 // var server = app.listen(4200, function () {
 //     var host = server.address().address

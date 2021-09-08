@@ -8,8 +8,8 @@ const httpOptions = {
 // for angular http methods
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Userpass } from '../userpass';
-import { Userobj } from '../userobj';
+import { Userpass } from 'server/www/api/login.js'
+import { Userobj } from '.../userobj';
 
 const BACKEND_URL = 'http://localhost:3000';
 
@@ -28,14 +28,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
   public loginfunc() {
-    this.httpClient.post(BACKEND_URL + '/login', this.userpass, httpOptions).subscribe((data: any) => {
+    this.httpClient.post(BACKEND_URL + '/login', this.userpass, httpOptions)
+    .subscribe((data: any) => {
       alert(JSON.stringify(this.userpass))
       if (data.ok) {
         sessionStorage.setItem('userid', this.userobj.userid.toString());
         sessionStorage.setItem('username', this.userobj.username);
         sessionStorage.setItem('userbirthdate', this.userobj.userbirthdate);
         sessionStorage.setItem('userage', this.userobj.userage.toString());
-        this.httpClient.post<Userobj[]>(BACKEND_URL + '/loginAfter', this.userobj, httpOptions).subscribe((m: any) => {console.log(m[0]);});
+        this.httpClient.post<Userobj[]>(BACKEND_URL + '/loginAfter', this.userobj, httpOptions)
+        .subscribe((m: any) => {console.log(m[0]);});
         this.router.navigateByUrl('account');
       } else {
         alert("Not Authorised.");

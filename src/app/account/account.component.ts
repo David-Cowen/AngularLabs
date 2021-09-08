@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,9 +12,9 @@ export class AccountComponent implements OnInit {
   username = sessionStorage.getItem('username');
   birthdate = sessionStorage.getItem('userbirthdate');
   userage = sessionStorage.getItem('userage');
-
-  subscription: any;
-  user: any;
+  constructor() {}
+  // subscription: any;
+  // user: any;
   // user = sessionStorage.getItem('currentUser')
   
   // constructor(private route:ActivatedRoute, private router:Router) { }
@@ -35,7 +34,7 @@ export class AccountComponent implements OnInit {
   }
 
   edit() {
-    sessionStorage.setItem('user', JSON.stringify(this.user))
+    // sessionStorage.setItem('user', JSON.stringify(this.user))
   }
 
 }
