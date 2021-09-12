@@ -23,7 +23,7 @@ var server = http.listen(3000, function() {
 //     res.sendFile(__dirname +"/index.html");
 // });
 
-app.post('login', require('./www/api/login'));
+app.post('/login', require('./www/api/login'));
 app.post('/loginafter', require('./www/api/loginAfter'));
 
 // var server = app.listen(4200, function () {

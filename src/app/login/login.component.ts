@@ -8,8 +8,7 @@ const httpOptions = {
 // for angular http methods
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Userpass } from 'server/www/api/login.js'
-import { Userobj } from '.../userobj';
+
 
 const BACKEND_URL = 'http://localhost:3000';
 
@@ -21,22 +20,22 @@ const BACKEND_URL = 'http://localhost:3000';
 
 export class LoginComponent implements OnInit {
   
-  userpass: Userpass = {username: 'dave@email.com', pass: '123'};
-  userobj: Userobj = {userid: 1, email: this.userpass.username, userbirthdate: null, userage: 34};
+  // userpass: Userpass = {username: 'dave@email.com', pass: '123'};
+  
 
   constructor(private router:Router, private httpClient: HttpClient ) { }
 
   ngOnInit() {}
   public loginfunc() {
-    this.httpClient.post(BACKEND_URL + '/login', this.userpass, httpOptions)
+    this.httpClient.post(BACKEND_URL + '/login', body: userobj, httpOptions)
     .subscribe((data: any) => {
-      alert(JSON.stringify(this.userpass))
+      alert(JSON.stringify(userobj))
       if (data.ok) {
-        sessionStorage.setItem('userid', this.userobj.userid.toString());
-        sessionStorage.setItem('username', this.userobj.username);
-        sessionStorage.setItem('userbirthdate', this.userobj.userbirthdate);
-        sessionStorage.setItem('userage', this.userobj.userage.toString());
-        this.httpClient.post<Userobj[]>(BACKEND_URL + '/loginAfter', this.userobj, httpOptions)
+        sessionStorage.setItem('userid', userobj.userid.toString());
+        sessionStorage.setItem('username', userobj.username);
+        sessionStorage.setItem('userbirthdate', userobj.userbirthdate);
+        sessionStorage.setItem('userage', userobj.userage.toString());
+        this.httpClient.post<Userobj[]>(BACKEND_URL + '/loginAfter', userobj, httpOptions)
         .subscribe((m: any) => {console.log(m[0]);});
         this.router.navigateByUrl('account');
       } else {

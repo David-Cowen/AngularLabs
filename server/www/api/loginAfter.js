@@ -3,7 +3,9 @@ var fs = require('fs');
 module.exports = function(req, res) {
     let userobj = {
         "userid": req.body.userid,
+        "email": req.body.email,
         "username": req.body.username,
+        "pass": req.body.pass,
         "userbirthdate": req.body.userbirthdate,
         "userage": req.body.userage
     }
