@@ -6,8 +6,8 @@ var cors = require('cors');
 app.use(cors());
 
 var bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 // Allows files to be hosted into a public folder

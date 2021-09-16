@@ -6,6 +6,7 @@ let userobj = require('./userobj')
 module.exports = function(req, res){
     var u = req.body.userobj.username;
     var p = req.body.userpass.pass;
+    fs.readFile(list, (somestring) =>{res.send().})
     userobj = {userid: 1, email: 'dave@emiail.com', username: 'dave', userbirthdate: null, userage: 34, ok: false};
     if ((userobj.username == u) && (userobj.pass == p)) {
         res.sendFile('./loginAfter')
