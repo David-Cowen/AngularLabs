@@ -4,11 +4,11 @@
 <!-- <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)"> -->
 <form>
     <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" [(ngModel)]="email"><br>
+    <input type="email" id="email" name="formUser.email" [(ngModel)]="formUser.email"><br>
 
     <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" [(ngModel)]="password">
+    <input type="password" id="password" name="formUser.password" [(ngModel)]="formUser.password">
 
-    <button (click)="itemClicked()">Submit</button>
+    <button (click)="login()">Submit</button>
 </form>
 
