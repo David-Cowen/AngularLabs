@@ -20,21 +20,28 @@ const BACKEND_URL = 'http://localhost:3000';
 
 export class LoginComponent implements OnInit {
   
+  username:string;
+  pass:string;
   // userpass: Userpass = {username: 'dave@email.com', pass: '123'};
   
 
-  constructor(private router:Router, private httpClient: HttpClient ) { }
+  constructor(private router:Router, private httpClient: HttpClient ) {
+    this.username = '';
+    this.pass = '';
+   }
 
   ngOnInit() {}
+  
   public loginfunc() {
-    this.httpClient.post(BACKEND_URL + '/login', body: userobj, httpOptions)
+    let userobj = {username:this.username,pass:this.pass}
+    this.httpClient.post(BACKEND_URL + '/login', userobj, httpOptions)
     .subscribe((data: any) => {
       alert(JSON.stringify(userobj))
       if (data.ok) {
-        sessionStorage.setItem('userid', userobj.userid.toString());
+        // sessionStorage.setItem('userid', userobj.userid.toString());
         sessionStorage.setItem('username', userobj.username);
-        sessionStorage.setItem('userbirthdate', userobj.userbirthdate);
-        sessionStorage.setItem('userage', userobj.userage.toString());
+        // sessionStorage.setItem('userbirthdate', userobj.userbirthdate);
+        // sessionStorage.setItem('userage', userobj.userage.toString());
         this.httpClient.post<Userobj[]>(BACKEND_URL + '/loginAfter', userobj, httpOptions)
         .subscribe((m: any) => {console.log(m[0]);});
         this.router.navigateByUrl('account');
