@@ -3,6 +3,11 @@ var app = express();
 var cors = require('cors');
 app.use(cors());
 app.use(express.static(__dirname + '/../dist/week4'));
+
+var bodyParser = require("body-parser");
+const { userInfo } = require('os');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true }));
 app.use(express.urlencoded())
 
 var http = require("http").Server(app);
@@ -15,3 +20,5 @@ var server = http.listen(3000, function() {
 // });
 
 app.post('/login', require('./loginRoute'));
+// app.post('/profile/' + sessionStorage.getItem(username), require('./accountRoute'))
+// app.post('/account', require('./account'))

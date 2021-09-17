@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'server/user';
 
 
 const BACKEND_URL = 'http://localhost:3000';
@@ -13,8 +14,21 @@ const BACKEND_URL = 'http://localhost:3000';
 })
 
 export class LoginComponent implements OnInit {
-  formUser = { email: "", password: "" };
-
+  formUser: User = {
+    email: "", password: "",
+    birthday: '',
+    username: '',
+    age: 0,
+    valid: false
+  };
+  // @Input() formUser:User = {
+  //   email: "", password: "",
+  //   birthday: '',
+  //   username: '',
+  //   valid: false,
+  //   age: 0
+  // };
+  
   constructor(private router:Router, private http: HttpClient ) { }
 
   ngOnInit() { }
@@ -22,15 +36,19 @@ export class LoginComponent implements OnInit {
   public login() {
     this.http.post(BACKEND_URL + '/login', this.formUser)
     .subscribe((data:any) => {
-      console.log(this.formUser)
+      JSON.stringify(this.formUser);
       if (data.valid) {
-        console.log("working")
+        sessionStorage.setItem('username', data.user.username);
+        sessionStorage.setItem('email', data.user.email);
+        sessionStorage.setItem('birthday', data.user.birthday);
+        sessionStorage.setItem('age', data.user.age);
+        this.router.navigateByUrl('account');
       } else {
         alert("Credentials Invalid.")
       }
     })
   }
-
+  
 }
 
 

@@ -1,0 +1,17 @@
+<h1>{{currentUser.username}} Profile Page</h1>
+
+<p>Edit Profile</p>
+
+<form #editUserForm="ngForm">
+    <h2>Edit User</h2>
+
+    Username:
+    <input type="text" [(ngModel)]="editedUser.username" name="username"> <br>
+    Email:
+    <input type="text" [(ngModel)]="editedUser.email" name="email"> <br>
+    Birthday:
+    <input type="text" [(ngModel)]="editedUser.birthday" name="birthday"> <br>
+    Age:
+    <input type="number" [(ngModel)]="editedUser.age" name="age"> <br>
+    <button class="edit_user_button" value="editUser" id="editUser" (click)="editUser()">Submit</button>
+</form>

@@ -1,3 +1,12 @@
-<h1>Account Page</h1>
-{{user}}
+<h1>Main Menu</h1>
+<nav>
+    <a [routerLink]="['/profile', username]">{{username}} Profile Page</a>
+    <p>{{username}}</p><button type="button" (click)="logout()">Logout</button>
+</nav>
+
+Username: {{username}}<br>
+Email: {{email}}<br>
+Age: {{age}}<br>
+Birthday: {{birthday}}<br>
+
 <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_568656.png&f=1&nofb=1" width="50" height="50">
